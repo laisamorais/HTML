@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="text-align: center;  font-family:sans-serif">
+
+
+
+
+    <h2>adicione o nome que voce quiser</h2>
+    <input type="text" id="nomes" placeholder=" adicionar nome ">
+    <button onclick="adicionarNome()">Adicionar</button>
+    <button onclick="limpar()">deletar</button>
+    <h2>lista de nomes</h2>
+    <ul id="ul"></ul>
+
+
+
+
+    <script>
+        let aluno = []
+
+        function adicionarNome() {
+
+            const input = document.getElementById("nomes")
+            if(input.value != ""){
+
+            
+            let existe = aluno.includes(input.value)
+            if (existe == false) {
+                aluno.push(input.value)
+                input.value = "";
+            }else {
+                alert("esse nome já foi identificado, digite novamente!")
+            }
+            atualizarGaleria()
+
+        }
+}
+
+        function atualizarGaleria() {
+            const ul = document.getElementById("ul")
+            ul.innerHTML = ""
+            for (let i = 0; i < aluno.length; i++) {
+                const il = document.createElement("li")
+
+                il.textContent = aluno[i]
+                ul.appendChild(il)
+
+            }
+        }
+        function limpar() {
+            let usuario = prompt("digite o nome do aluno: ")
+            let indice = aluno.indexOf(usuario)
+            aluno.splice(indice)
+            atualizarGaleria()
+        }              
+    </script>
+
+</body>
+
+</html>
